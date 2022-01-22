@@ -12,6 +12,7 @@
 		"node": ">=12.22"
 	},
 	"scripts": {
+		"test": "node test.js",
 		"release": "np --no-yarn --no-2fa --no-cleanup"
 	},
 	"publishConfig": {
