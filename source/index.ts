@@ -66,8 +66,8 @@ function getEslintBaseParserOptions() {
 function getEslintBasePlugins() {
 	// TODO: eslint-plugin-codegen is not compatible with eslint-plugin-markdown, see https://github.com/mmkal/ts/issues/235
 
-	// return ['prettier', 'unicorn', 'ava', 'import', 'codegen', 'markdown'];
-	return ['prettier', 'unicorn', 'ava', 'import', 'markdown'] as const;
+	// return ['prettier', 'unicorn', 'ava', 'import', 'codegen', 'markdown', 'no-use-extend-native', 'node', 'eslint-comments'];
+	return ['prettier', 'unicorn', 'ava', 'import', 'markdown', 'no-use-extend-native', 'node', 'eslint-comments'] as const;
 }
 
 function getEslintBaseExtends() {
@@ -87,6 +87,46 @@ function getEslintBaseRules() {
 		'no-console': 'error',
 		'prefer-arrow-callback': 'error',
 		'unicorn/custom-error-definition': 'error',
+		'no-use-extend-native/no-use-extend-native': 'error',
+		'promise/param-names': 'error',
+		'promise/no-return-wrap': ['error', { allowReject: true }],
+		'promise/no-new-statics': 'error',
+		'promise/no-return-in-finally': 'error',
+		'promise/valid-params': 'error',
+		'promise/prefer-await-to-then': 'error',
+		'import/default': 'error',
+		'import/export': 'error',
+		'import/no-absolute-path': 'error',
+		'import/no-anonymous-default-export': 'error',
+		'import/no-named-default': 'error',
+		'import/no-webpack-loader-syntax': 'error',
+		'import/no-self-import': 'error',
+		'import/no-useless-path-segments': 'error',
+		'import/no-amd': 'error',
+		'import/no-duplicates': 'error',
+		'import/no-extraneous-dependencies': 'error',
+		'import/no-mutable-exports': 'error',
+		'import/no-named-as-default-member': 'error',
+		'import/no-named-as-default': 'error',
+		'import/no-unresolved': 'error',
+		'node/no-unpublished-bin': 'error',
+		'node/no-new-require': 'error',
+		'node/no-path-concat': 'error',
+		'node/no-deprecated-api': 'error',
+		'node/prefer-global/buffer': ['error', 'always'],
+		'node/prefer-global/console': ['error', 'always'],
+		'node/prefer-global/process': ['error', 'always'],
+		'node/prefer-global/text-decoder': ['error', 'always'],
+		'node/prefer-global/text-encoder': ['error', 'always'],
+		'node/prefer-global/url-search-params': ['error', 'always'],
+		'node/prefer-global/url': ['error', 'always'],
+		'node/prefer-promises/dns': 'error',
+		'node/prefer-promises/fs': 'error',
+		'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+		'eslint-comments/no-aggregating-enable': 'error',
+		'eslint-comments/no-duplicate-disable': 'error',
+		'eslint-comments/no-unused-disable': 'error',
+		'eslint-comments/no-unused-enable': 'error',
 
 		// Warnings
 		// 'codegen/codegen': 'warn',
@@ -95,6 +135,7 @@ function getEslintBaseRules() {
 
 		// Disagreeing with some recommended configs from plugins
 		'no-await-in-loop': 'off',
+		'unicorn/better-regex': 'off', // Broken, see eslint-plugin-unicorn #895, #1231, #1626
 		'unicorn/catch-error-name': 'off',
 		'unicorn/consistent-function-scoping': 'off',
 		'unicorn/no-array-for-each': 'off',
