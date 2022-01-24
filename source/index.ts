@@ -168,6 +168,7 @@ function getEslintExtraTsRules() {
 export type EslintrcOptions = {
 	rules?: Record<string, unknown>;
 	tsOnlyRules?: Record<string, unknown>;
+	ignorePatterns?: string[];
 };
 
 export function eslintrc(options?: EslintrcOptions) {
@@ -181,6 +182,12 @@ export function eslintrc(options?: EslintrcOptions) {
 		...options?.tsOnlyRules
 	};
 
+	const ignorePatterns = ['node_modules'];
+
+	if (options?.ignorePatterns) {
+		ignorePatterns.push(...options.ignorePatterns);
+	}
+
 	return {
 		parser: '@typescript-eslint/parser',
 		parserOptions: {
@@ -189,7 +196,7 @@ export function eslintrc(options?: EslintrcOptions) {
 		},
 		plugins: getEslintBasePlugins(),
 		extends: getEslintBaseExtends(),
-		ignorePatterns: ['node_modules'],
+		ignorePatterns,
 		rules: { ...baseRules, ...getEslintMarkdownStuffPrettierRules() },
 		overrides: [
 			{
