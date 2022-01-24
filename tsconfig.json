@@ -1,0 +1,31 @@
+{
+	"include": ["source"],
+	"compilerOptions": {
+		"outDir": "dist",
+
+		"target": "es2019", // Node.js 12
+		"module": "commonjs",
+		"moduleResolution": "node",
+		/// "preserveValueImports": true,
+
+		"declaration": true,
+		"newLine": "lf",
+		"noEmitOnError": true,
+		"pretty": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"stripInternal": true,
+
+		"strict": true,
+		"exactOptionalPropertyTypes": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"useUnknownInCatchVariables": true
+	}
+}

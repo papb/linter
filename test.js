@@ -1,4 +1,4 @@
-const { eslintrc, prettierrc } = require('.');
+const { eslintrc, prettierrc } = require('./dist');
 
 eslintrc();
 prettierrc();
