@@ -1,6 +1,6 @@
 {
 	"name": "@papb/linter",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "My custom linter configs and dependencies collected in one place to avoid repetition.",
 	"license": "MIT",
 	"repository": "papb/linter",
