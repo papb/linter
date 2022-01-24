@@ -64,14 +64,28 @@ function getEslintBaseParserOptions() {
 }
 
 function getEslintBasePlugins() {
-	// TODO: eslint-plugin-codegen is not compatible with eslint-plugin-markdown, see https://github.com/mmkal/ts/issues/235
-
-	// return ['prettier', 'unicorn', 'ava', 'import', 'codegen', 'markdown', 'no-use-extend-native', 'node', 'eslint-comments'];
-	return ['prettier', 'unicorn', 'ava', 'import', 'markdown', 'no-use-extend-native', 'node', 'eslint-comments'] as const;
+	return [
+		'ava',
+		// 'codegen', // TODO: eslint-plugin-codegen is not compatible with eslint-plugin-markdown, see https://github.com/mmkal/ts/issues/235
+		'eslint-comments',
+		'import',
+		'markdown',
+		'no-use-extend-native',
+		'node',
+		'prettier',
+		'promise',
+		'unicorn',
+	] as const;
 }
 
 function getEslintBaseExtends() {
-	return ['eslint:recommended', 'plugin:unicorn/recommended', 'plugin:ava/recommended', 'xo', 'plugin:markdown/recommended'] as const;
+	return [
+		'eslint:recommended',
+		'plugin:unicorn/recommended',
+		'plugin:ava/recommended',
+		'xo',
+		'plugin:markdown/recommended'
+	] as const;
 }
 
 function getEslintBaseRules() {
