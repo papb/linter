@@ -46,6 +46,7 @@ function getEslintBasePrettierRules() {
 		'no-mixed-spaces-and-tabs': 'off',
 		'linebreak-style': 'off',
 		'quote-props': ['error', 'consistent-as-needed'],
+		'generator-star-spacing': 'off',
 	} as const;
 }
 
@@ -148,7 +149,6 @@ function getEslintBaseRules() {
 		'unicorn/expiring-todo-comments': 'warn',
 
 		// Disagreeing with some recommended configs from plugins
-		'unicorn/prefer-number-properties': ['error', { checkInfinity: false }],
 		'no-await-in-loop': 'off',
 		'unicorn/better-regex': 'off', // Broken, see eslint-plugin-unicorn #895, #1231, #1626
 		'unicorn/catch-error-name': 'off',
@@ -161,6 +161,7 @@ function getEslintBaseRules() {
 		'unicorn/no-useless-undefined': 'off',
 		'unicorn/prefer-module': 'off',
 		'unicorn/prefer-node-protocol': 'off',
+		'unicorn/prefer-number-properties': ['error', { checkInfinity: false }],
 		'unicorn/prefer-spread': 'off',
 		'unicorn/prevent-abbreviations': 'off',
 
@@ -187,8 +188,8 @@ function getEslintExtraTsExtends() {
 function getEslintExtraTsRules() {
 	return {
 		/// 'object-curly-spacing': 'off',
-		'@typescript-eslint/object-curly-spacing': ['error', 'always'],
 		'@typescript-eslint/indent': 'off',
+		'@typescript-eslint/object-curly-spacing': ['error', 'always'],
 		'@typescript-eslint/quotes': 'off',
 		'@typescript-eslint/semi': 'off',
 
@@ -198,14 +199,28 @@ function getEslintExtraTsRules() {
 
 		'@typescript-eslint/padding-line-between-statements': 'off',
 
+		'@typescript-eslint/consistent-indexed-object-style': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/no-non-null-assertion': 'off',
-		'@typescript-eslint/consistent-indexed-object-style': 'off',
 		'@typescript-eslint/no-require-imports': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
 
 		'@typescript-eslint/comma-dangle': 'off',
 		'@typescript-eslint/no-explicit-any': 'off',
+
+		'@typescript-eslint/naming-convention': [
+			'error',
+			{
+				selector: 'default',
+				format: ['camelCase', 'UPPER_CASE'],
+				leadingUnderscore: 'allow',
+				trailingUnderscore: 'allow',
+			},
+			{
+				selector: 'typeLike',
+				format: ['PascalCase', 'UPPER_CASE'],
+			},
+		],
 
 		/// 'no-unused-vars': 'off',
 		/// '@typescript-eslint/no-unused-vars': [
@@ -285,7 +300,7 @@ export function eslintrc(options?: EslintrcOptions) {
 				},
 				plugins: ['@typescript-eslint/eslint-plugin', ...getEslintBasePlugins()],
 				extends: [...getEslintBaseExtends(), ...getEslintExtraTsExtends()],
-				rules: { ...baseRules, ...extraTsRules },
+				rules: { ...baseRules, ...extraTsRules, ...getEslintBasePrettierRules() },
 			},
 		],
 	} as const;
