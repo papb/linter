@@ -148,6 +148,7 @@ function getEslintBaseRules() {
 		'unicorn/expiring-todo-comments': 'warn',
 
 		// Disagreeing with some recommended configs from plugins
+		'unicorn/prefer-number-properties': ['error', { checkInfinity: false }],
 		'no-await-in-loop': 'off',
 		'unicorn/better-regex': 'off', // Broken, see eslint-plugin-unicorn #895, #1231, #1626
 		'unicorn/catch-error-name': 'off',
